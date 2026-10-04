@@ -1,69 +1,61 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { ArrowRight, Phone } from "lucide-react";
+
+const services = ["Carpet", "LVP", "Laminate", "Hardwood", "Tile", "Oddities"];
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
+    <main>
+      <section className="banner" aria-label="855 4 Carpet">
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          className="banner-image"
+          src="/8554carpet-cover.png"
+          alt="855 4 Carpet logo over a freshly carpeted living room"
+          width={1944}
+          height={720}
           priority
+          sizes="100vw"
         />
-        <div className={styles.intro}>
-          <h1>
-            To get started, edit the{" "}
-            <code className={styles.code}>page.tsx</code> file.
-          </h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
+      </section>
+
+      <section className="intro">
+        <p className="eyebrow">Homes &amp; commercial</p>
+        <h1>Carpet, LVP &amp; tile installers serving the Southeast USA</h1>
+        <p className="intro-text">
+          Quality materials at <strong>rock bottom pricing.</strong>
+        </p>
+        <div className="actions">
+          <a className="button button-primary" href="tel:+18554227738">
+            <Phone aria-hidden="true" size={18} strokeWidth={2.4} />
+            Call 855-4-CARPET
           </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <Link className="button button-outline" href="/contact">
+            Contact details
+            <ArrowRight aria-hidden="true" size={18} strokeWidth={2.4} />
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="services" aria-labelledby="services-title">
+        <h2 id="services-title">What we install</h2>
+        <ul className="service-grid">
+          {services.map((service) => (
+            <li key={service} className="service-card">
+              {service}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="notice">
+        <p className="eyebrow">Coming soon</p>
+        <h2>Our full website is on the way</h2>
+        <p>
+          Services, project gallery and more are coming soon. For now,
+          we&rsquo;re just a phone call away.
+        </p>
+      </section>
+    </main>
   );
 }
